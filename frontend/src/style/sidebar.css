@@ -1,0 +1,26 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100% - 60px);
+  bottom: 0;
+  position: fixed;
+  background: #005766;
+  padding-top: 20px;
+}
+.sidebar-list {
+  padding: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 17px;
+  color: #fff;
+}
+.sidebar-list .icon {
+  height: 18px;
+  width: 18px;
+  margin-right: 5px;
+  float: left;
+  margin-top: 2px;
+}
+.sidebar-list .icon svg {
+  height: 18px;
+  width: 18px;
+}

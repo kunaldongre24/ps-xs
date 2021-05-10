@@ -1,0 +1,10 @@
+@media only screen and (max-width: 1328px) {
+  :root {
+    --sidebar-width: 100px;
+  }
+}
+@media only screen and (min-width: 1328px) {
+  :root {
+    --sidebar-width: 230px;
+  }
+}

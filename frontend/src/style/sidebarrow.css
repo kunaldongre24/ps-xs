@@ -1,0 +1,65 @@
+.list-element {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-basis: 100%;
+  cursor: pointer;
+  font-size: 15px;
+  height: 35px;
+  box-sizing: content-box;
+  border: 1px solid transparent;
+  color: #fff;
+  vertical-align: middle;
+}
+.closed .list-element {
+  display: block !important;
+  text-align: center;
+  height: auto;
+  font-size: 12px;
+}
+a {
+  text-decoration: none;
+}
+.list-element:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.selected .list-element {
+  color: #fff;
+  background: #008799;
+}
+
+.list-icon svg path,
+.list-icon svg {
+  visibility: visible;
+  font-size: 25px;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+}
+.selected .list-icon svg path {
+  color: #fff !important;
+}
+.contain-element {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 20px;
+  flex-direction: row;
+  align-items: center;
+}
+.closed .contain-element {
+  display: block;
+  text-align: center;
+  margin-left: 0;
+  position: relative;
+  box-sizing: content-box;
+  padding: 10px;
+}
+.list-desc {
+  color: #fff;
+  margin-left: 20px;
+}
+.closed .list-desc {
+  margin-left: 0px;
+}
