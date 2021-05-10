@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Table(props) {
+  const [edit, setEdit] = useState(false);
+
   const { data } = props;
   return (
     <div>
-      {" "}
       <button type="button" className="addNew">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -45,18 +46,111 @@ function Table(props) {
               weight,
               nationality,
             } = data[i];
+            var inputStyle = { display: "none" };
+            var textStyle = { display: "block" };
+            if (_id == edit) {
+              inputStyle = { display: "block" };
+              textStyle = { display: "none" };
+            } else {
+              inputStyle = { display: "none" };
+              textStyle = { display: "block" };
+            }
             return (
-              <tr key={i}>
-                <td>{name}</td>
-                <td>{fatherName}</td>
-                <td>{email}</td>
-                <td>{address}</td>
-                <td>{mobile}</td>
-                <td>{height}</td>
-                <td>{weight}</td>
-                <td>{nationality}</td>
+              <tr key={i} id={_id}>
                 <td>
-                  <button className="edit Btn">
+                  <div className="textfield" style={textStyle}>
+                    {name}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="text"
+                    defaultValue={name}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {fatherName}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="text"
+                    defaultValue={fatherName}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {email}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="email"
+                    defaultValue={email}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {address}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="text"
+                    defaultValue={address}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {mobile}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="phone"
+                    defaultValue={mobile}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {height}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="number"
+                    defaultValue={height}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {weight}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="number"
+                    defaultValue={weight}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <div className="textfield" style={textStyle}>
+                    {nationality}
+                  </div>
+                  <input
+                    style={inputStyle}
+                    type="text"
+                    defaultValue={nationality}
+                    className="edit-field"
+                  />
+                </td>
+                <td>
+                  <button
+                    className="edit Btn"
+                    value={_id}
+                    onClick={setEdit(_id)}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="24px"
