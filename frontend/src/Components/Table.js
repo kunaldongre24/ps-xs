@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 function Table(props) {
-  const [edit, setEdit] = useState(false);
-
+  const [edit, setEdit] = useState("");
+  function handleEdit(event) {
+    setEdit(event.currentTarget.value);
+  }
   const { data } = props;
   return (
     <div>
@@ -46,14 +48,14 @@ function Table(props) {
               weight,
               nationality,
             } = data[i];
-            var inputStyle = { display: "none" };
             var textStyle = { display: "block" };
-            if (_id == edit) {
-              inputStyle = { display: "block" };
-              textStyle = { display: "none" };
+            var inputStyle = { display: "none" };
+            if (edit == _id) {
+              var textStyle = { display: "none" };
+              var inputStyle = { display: "block" };
             } else {
-              inputStyle = { display: "none" };
-              textStyle = { display: "block" };
+              var textStyle = { display: "block" };
+              var inputStyle = { display: "none" };
             }
             return (
               <tr key={i} id={_id}>
@@ -62,10 +64,10 @@ function Table(props) {
                     {name}
                   </div>
                   <input
-                    style={inputStyle}
                     type="text"
                     defaultValue={name}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
@@ -73,32 +75,33 @@ function Table(props) {
                     {fatherName}
                   </div>
                   <input
-                    style={inputStyle}
                     type="text"
                     defaultValue={fatherName}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {email}
+                    {" "}
+                    {email}{" "}
                   </div>
                   <input
-                    style={inputStyle}
                     type="email"
                     defaultValue={email}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {address}
+                    {address}{" "}
                   </div>
                   <input
-                    style={inputStyle}
                     type="text"
                     defaultValue={address}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
@@ -106,10 +109,10 @@ function Table(props) {
                     {mobile}
                   </div>
                   <input
-                    style={inputStyle}
                     type="phone"
                     defaultValue={mobile}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
@@ -117,10 +120,10 @@ function Table(props) {
                     {height}
                   </div>
                   <input
-                    style={inputStyle}
                     type="number"
                     defaultValue={height}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
@@ -128,10 +131,10 @@ function Table(props) {
                     {weight}
                   </div>
                   <input
-                    style={inputStyle}
                     type="number"
                     defaultValue={weight}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
@@ -139,18 +142,14 @@ function Table(props) {
                     {nationality}
                   </div>
                   <input
-                    style={inputStyle}
                     type="text"
                     defaultValue={nationality}
                     className="edit-field"
+                    style={inputStyle}
                   />
                 </td>
                 <td>
-                  <button
-                    className="edit Btn"
-                    value={_id}
-                    onClick={setEdit(_id)}
-                  >
+                  <button className="edit Btn" value={_id} onClick={handleEdit}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="24px"
