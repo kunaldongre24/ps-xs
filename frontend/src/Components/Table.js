@@ -95,7 +95,7 @@ function Table(props) {
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {address}{" "}
+                    {address}
                   </div>
                   <input
                     type="text"
