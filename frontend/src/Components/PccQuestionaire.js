@@ -42,6 +42,35 @@ function PccQuestionaire() {
     sendData();
     setLoading(false);
   }
+
+  async function updateData(event) {
+    setLoading(true);
+    const input = document.getElementsByClassName(event.currentTarget.value);
+    const value = [];
+    for (var i = 0; i <= 7; i++) {
+      value[i] = input[i].value;
+    }
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: value[0],
+        fatherName: value[1],
+        email: value[2],
+        address: value[3],
+        mobile: value[4],
+        height: value[5],
+        weight: value[6],
+        nationality: value[7],
+      }),
+    };
+    const updateData = await fetch(
+      `http://localhost:8000/api/v1/pcc/${event.currentTarget.value}`,
+      requestOptions
+    );
+    sendData();
+    setLoading(false);
+  }
   return (
     <div className="questionaire">
       <label htmlFor="category">Select Process Area:</label>
@@ -66,7 +95,11 @@ function PccQuestionaire() {
         className="table"
         style={loading ? { border: "1px solid #ddd" } : {}}
       >
-        {loading ? <Loader /> : <Table data={data} delete={removeData} />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <Table data={data} delete={removeData} update={updateData} />
+        )}
       </div>
     </div>
   );
