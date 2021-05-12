@@ -28,7 +28,7 @@ function Table(props) {
             <th>Father Name</th>
             <th>Email</th>
             <th>Address</th>
-            <th>Mobile</th>
+            <th>Phone</th>
             <th>Height</th>
             <th>Weight</th>
             <th>Nationality</th>
@@ -38,17 +38,17 @@ function Table(props) {
         <tbody>
           {data.map(function (object, i) {
             const {
-              _id,
+              id,
               name,
               fatherName,
               email,
               address,
-              mobile,
+              phone,
               height,
               weight,
               nationality,
             } = data[i];
-            const match = edit == _id;
+            const match = edit == id;
             var textStyle = { display: "block" };
             var inputStyle = { display: "none" };
             if (match) {
@@ -59,7 +59,7 @@ function Table(props) {
               var inputStyle = { display: "none" };
             }
             return (
-              <tr key={i} id={_id}>
+              <tr key={i} id={id}>
                 <td>
                   <div className="textfield" style={textStyle}>
                     {name}
@@ -67,7 +67,7 @@ function Table(props) {
                   <input
                     type="text"
                     defaultValue={name}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -78,7 +78,7 @@ function Table(props) {
                   <input
                     type="text"
                     defaultValue={fatherName}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -89,7 +89,7 @@ function Table(props) {
                   <input
                     type="email"
                     defaultValue={email}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -100,18 +100,18 @@ function Table(props) {
                   <input
                     type="text"
                     defaultValue={address}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {mobile}
+                    {phone}
                   </div>
                   <input
                     type="phone"
-                    defaultValue={mobile}
-                    className={`edit-field ${_id}`}
+                    defaultValue={phone}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -122,7 +122,7 @@ function Table(props) {
                   <input
                     type="number"
                     defaultValue={height}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -133,7 +133,7 @@ function Table(props) {
                   <input
                     type="number"
                     defaultValue={weight}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
@@ -144,14 +144,14 @@ function Table(props) {
                   <input
                     type="text"
                     defaultValue={nationality}
-                    className={`edit-field ${_id}`}
+                    className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <button
                     className="edit Btn"
-                    value={_id}
+                    value={id}
                     onClick={handleEdit}
                     style={textStyle}
                   >
@@ -168,7 +168,7 @@ function Table(props) {
                   </button>
                   <button
                     className="edit Btn"
-                    value={_id}
+                    value={id}
                     onClick={props.update}
                     style={inputStyle}
                   >
@@ -188,7 +188,7 @@ function Table(props) {
                   <button
                     type="button"
                     className="delete Btn"
-                    value={_id}
+                    value={id}
                     onClick={props.delete}
                     style={textStyle}
                   >
@@ -206,7 +206,7 @@ function Table(props) {
                   <button
                     type="button"
                     className="delete Btn"
-                    value={_id}
+                    value={id}
                     onClick={() => {
                       setEdit("");
                     }}
