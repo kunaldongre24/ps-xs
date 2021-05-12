@@ -95,7 +95,16 @@ tr:nth-child(even) {
   width: 100%;
   height: 30px;
   padding: 10px;
+  border: 1px solid #aaa;
 }
 .textfield {
+  display: none;
+}
+.error {
+  padding: 7px 14px;
+  color: #744d4d;
+  border: 1px solid #ac8787;
+  float: left;
+  background: #ffd2cf;
   display: none;
 }

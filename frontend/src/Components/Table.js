@@ -2,24 +2,67 @@ import React, { useState } from "react";
 
 function Table(props) {
   const [edit, setEdit] = useState("");
+  const [error, setError] = useState("sds");
+  const [add, setAdd] = useState(false);
   function handleEdit(event) {
     setEdit(event.currentTarget.value);
+  }
+  function handleSubmit() {
+    const input = document.getElementsByClassName("new");
+    const err = document.getElementsByClassName("error");
+    var empty = false;
+    for (var i = 0; i <= 7; i++) {
+      if (!input[i].value) {
+        input[i].style.background = "#ffd2cf";
+        err[0].style.display = "block";
+        setError("Input field cannot be empty...");
+        empty = true;
+      }
+    }
+    if (!empty) props.add();
   }
   const { data } = props;
   return (
     <div>
-      <button type="button" className="addNew">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
-          fill="#FFFFFF"
-        >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M13 11h-2v3H8v2h3v3h2v-3h3v-2h-3zm1-9H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
-        </svg>
-        <div className="text">New</div>
+      <div className="error">{error}</div>
+      <button
+        type="button"
+        className="addNew"
+        onClick={() => {
+          setAdd(!add);
+        }}
+      >
+        {add ? (
+          <>
+            <div className="text">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="#fff"
+              >
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+              </svg>{" "}
+              Cancel
+            </div>
+          </>
+        ) : (
+          <>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#FFFFFF"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path d="M13 11h-2v3H8v2h3v3h2v-3h3v-2h-3zm1-9H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
+            </svg>
+            <div className="text">New</div>
+          </>
+        )}
       </button>
       <table>
         <thead>
@@ -36,6 +79,71 @@ function Table(props) {
           </tr>
         </thead>
         <tbody>
+          {add ? (
+            <tr id="new">
+              <td>
+                <input type="text" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="text" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="email" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="text" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="phone" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="number" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="number" required className="new edit-field" />
+              </td>
+              <td>
+                <input type="text" required className="new edit-field" />
+              </td>
+              <td>
+                <button className="edit Btn" value="new" onClick={handleSubmit}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    width="24px"
+                    fill="#fff"
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+                  </svg>
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  value="new"
+                  className="delete Btn"
+                  onClick={() => {
+                    setAdd(false);
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    width="24px"
+                    fill="#fff"
+                  >
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          ) : (
+            ""
+          )}
           {data.map(function (object, i) {
             const {
               id,
