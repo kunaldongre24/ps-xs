@@ -1,60 +1,53 @@
-const Pcc = require("../models/Pcc");
+import db from "../db";
+
 const PccController = {
   // READ ALL
-  async showPccs(req, res) {
-    try {
-      const pccs = await Pcc.find();
-      res.json(pccs);
-    } catch (err) {
-      res.json({ message: err });
-    }
+  showPccs(req, res) {
+    const sql = `SELECT * FROM user`;
+    let query = db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
   //READ ONE
-  async showPcc(req, res) {
-    try {
-      const pccs = await Pcc.find({ nationality: req.params.category });
-      res.json(pccs);
-    } catch (err) {
-      res.json({ message: err });
-    }
+  showPcc(req, res) {
+    const sql = `SELECT * FROM user WHERE nationality='${req.params.category}'`;
+    let query = db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
   // CREATE ONE
-  async addPcc(req, res) {
-    const pcc = Pcc(req.body);
-    try {
-      const addPcc = await pcc.save();
-      res.json(addPcc);
-    } catch (err) {
-      res.json({ message: err });
-    }
+  addPcc(req, res) {
+    const user = req.body;
+    const sql = `INSERT INTO user SET ?`;
+    let query = db.query(sql, user, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
-  async updatePcc(req, res) {
-    try {
-      const updatePcc = await Pcc.updateOne(
-        { _id: req.params.pccId },
-        { $set: req.body }
-      );
-      res.json(updatePcc);
-    } catch (err) {
-      res.json({ message: err });
-    }
+  updatePcc(req, res) {
+    const user = req.body;
+    const sql = `UPDATE user SET ? WHERE id = '${req.params.pccId}'`;
+    let query = db.query(sql, user, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
   //deleting pccs
-  async deletePcc(req, res) {
-    try {
-      const removePcc = await Pcc.deleteOne({ _id: req.params.pccId });
-      res.json({ message: "Success" });
-    } catch (err) {
-      res.json({ message: err });
-    }
+  deletePcc(req, res) {
+    const sql = `DELETE FROM user WHERE id = '${req.params.pccId}'`;
+    let query = db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
-  async showPccCategory(req, res) {
-    try {
-      const pccCategory = await Pcc.distinct("nationality");
-      res.json(pccCategory);
-    } catch (err) {
-      res.json({ message: err });
-    }
+  showPccCategory(req, res) {
+    const sql = `SELECT DISTINCT nationality FROM user;`;
+    let query = db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   },
 };
 

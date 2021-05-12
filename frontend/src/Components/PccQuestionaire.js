@@ -58,7 +58,7 @@ function PccQuestionaire() {
         fatherName: value[1],
         email: value[2],
         address: value[3],
-        mobile: value[4],
+        phone: value[4],
         height: value[5],
         weight: value[6],
         nationality: value[7],
@@ -83,7 +83,7 @@ function PccQuestionaire() {
         )}
 
         {category.map(function (object, i) {
-          const val = category[i];
+          const val = category[i].nationality;
           return (
             <option key={i} value={val}>
               {val}
