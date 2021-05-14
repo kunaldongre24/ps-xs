@@ -7,7 +7,7 @@ function PccQuestionaire() {
   const [category, setCategory] = useState([]);
   const [cc, setCc] = useState("");
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   useEffect(async () => {
     const response = await fetch("http://localhost:8000/api/v1/pcc/");
     const res = await response.json();
@@ -15,10 +15,8 @@ function PccQuestionaire() {
     const list = await category.json();
     setData(res);
     setCategory(list);
-    setLoading(false);
   }, []);
   async function sendData(event) {
-    setLoading(true);
     if (event) {
       const category = await fetch(
         `http://localhost:8000/api/v1/pcc/${event.target.value}`
@@ -31,20 +29,16 @@ function PccQuestionaire() {
       const list = await category.json();
       setData(list);
     }
-    setLoading(false);
   }
   async function removeData(event) {
-    setLoading(true);
     const removeData = await fetch(
       `http://localhost:8000/api/v1/pcc/${event.currentTarget.value}`,
       { method: "DELETE" }
     );
     sendData();
-    setLoading(false);
   }
 
   async function updateData(event) {
-    setLoading(true);
     const input = document.getElementsByClassName(event.currentTarget.value);
     const value = [];
     for (var i = 0; i <= 7; i++) {
@@ -69,10 +63,8 @@ function PccQuestionaire() {
       requestOptions
     );
     sendData();
-    setLoading(false);
   }
   async function addData() {
-    setLoading(true);
     const input = document.getElementsByClassName("new");
     const value = [];
     for (var i = 0; i <= 7; i++) {
@@ -97,7 +89,6 @@ function PccQuestionaire() {
       requestOptions
     );
     sendData();
-    setLoading(false);
   }
 
   return (
