@@ -60,21 +60,18 @@ function Table(props) {
               <path d="M0 0h24v24H0V0z" fill="none" />
               <path d="M13 11h-2v3H8v2h3v3h2v-3h3v-2h-3zm1-9H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
             </svg>
-            <div className="text">Add PCC Questionaire</div>
+            <div className="text">Add Project Details</div>
           </>
         )}
       </button>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Father Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Nationality</th>
+            <th>Department</th>
+            <th>Project Name</th>
+            <th>Project Manager</th>
+            <th>MCR IR</th>
+            <th>Last Conducted SE</th>
             <th colSpan="2">Edit</th>
           </tr>
         </thead>
@@ -96,15 +93,7 @@ function Table(props) {
               <td>
                 <input type="phone" required className="new edit-field" />
               </td>
-              <td>
-                <input type="number" required className="new edit-field" />
-              </td>
-              <td>
-                <input type="number" required className="new edit-field" />
-              </td>
-              <td>
-                <input type="text" required className="new edit-field" />
-              </td>
+
               <td>
                 <button className="edit Btn" value="new" onClick={handleSubmit}>
                   <svg
@@ -147,14 +136,11 @@ function Table(props) {
           {data.map(function (object, i) {
             const {
               id,
-              name,
-              fatherName,
-              email,
-              address,
-              phone,
-              height,
-              weight,
-              nationality,
+              department,
+              projectName,
+              projectManager,
+              mcrid,
+              lastconduct,
             } = data[i];
             const match = edit === id;
             var textStyle = { display: "block" };
@@ -170,92 +156,60 @@ function Table(props) {
               <tr key={i} id={id}>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {name}
+                    {department}
                   </div>
                   <input
                     type="text"
-                    defaultValue={name}
+                    defaultValue={department}
                     className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {fatherName}
+                    {projectName}
                   </div>
                   <input
                     type="text"
-                    defaultValue={fatherName}
+                    defaultValue={projectName}
                     className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {email}
+                    {projectManager}
                   </div>
                   <input
                     type="email"
-                    defaultValue={email}
+                    defaultValue={projectManager}
                     className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {address}
+                    {mcrid}
                   </div>
                   <input
                     type="text"
-                    defaultValue={address}
+                    defaultValue={mcrid}
                     className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
                 <td>
                   <div className="textfield" style={textStyle}>
-                    {phone}
+                    {lastconduct}
                   </div>
                   <input
                     type="phone"
-                    defaultValue={phone}
+                    defaultValue={lastconduct}
                     className={`edit-field ${id}`}
                     style={inputStyle}
                   />
                 </td>
-                <td>
-                  <div className="textfield" style={textStyle}>
-                    {height}
-                  </div>
-                  <input
-                    type="number"
-                    defaultValue={height}
-                    className={`edit-field ${id}`}
-                    style={inputStyle}
-                  />
-                </td>
-                <td>
-                  <div className="textfield" style={textStyle}>
-                    {weight}
-                  </div>
-                  <input
-                    type="number"
-                    defaultValue={weight}
-                    className={`edit-field ${id}`}
-                    style={inputStyle}
-                  />
-                </td>
-                <td>
-                  <div className="textfield" style={textStyle}>
-                    {nationality}
-                  </div>
-                  <input
-                    type="text"
-                    defaultValue={nationality}
-                    className={`edit-field ${id}`}
-                    style={inputStyle}
-                  />
-                </td>
+
                 <td>
                   <button
                     className="edit Btn"

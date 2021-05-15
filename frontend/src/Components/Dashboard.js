@@ -26,7 +26,7 @@ function Dashboard() {
       </div>
       <div style={{ marginTop: "30px" }} className="tcontain">
         <div className="tc" style={{ flex: "4" }}>
-          <table className="tbl" style={{ marginRight: "7px", height: "100%" }}>
+          <table className="tbl" style={{ marginRight: "7px" }}>
             <tr>
               <th>Project</th>
               <th>SW1</th>
@@ -38,66 +38,6 @@ function Dashboard() {
               <th>SW9</th>
               <th>Overall</th>
               <th>ASPICE Level</th>
-            </tr>
-            <tr>
-              <td>Project 01</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Project 02</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Project 03</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Project 04</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Project 05</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
             </tr>
           </table>
         </div>
@@ -120,7 +60,7 @@ function Dashboard() {
               <td>50 to 85%</td>
             </tr>
             <tr>
-              <td>F( Greendongrekunal16 )</td>
+              <td>F( Green )</td>
               <td>85 to 100%</td>
             </tr>
           </table>
