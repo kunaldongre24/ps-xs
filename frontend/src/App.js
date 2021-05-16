@@ -8,6 +8,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1328);
+
+  const closeModal = () => {
+    const element = document.getElementsByClassName("modal");
+    element[0].style.display = "none";
+  };
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -21,6 +26,14 @@ function App() {
 
   return (
     <div className="App">
+      <div class="modal">
+        <div class="modal-body">
+          <span className="close" onClick={closeModal}>
+            &#x2715;
+          </span>
+          <div class="modalcontent"></div>
+        </div>
+      </div>
       <Router>
         <Header />
         <Sidebar closed={isMobile} />

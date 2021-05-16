@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../style/PccQuestionaire.css";
-import Table from "./Table";
+import Table from "./OpenTopicsTable";
 import Loader from "./Loader";
 
 function PccQuestionaire() {
@@ -35,7 +35,6 @@ function PccQuestionaire() {
       `http://localhost:8000/api/v1/pcc/${event.currentTarget.value}`,
       { method: "DELETE" }
     );
-    openModal("The data was deleted Successfully");
     sendData();
   }
 
@@ -63,15 +62,7 @@ function PccQuestionaire() {
       `http://localhost:8000/api/v1/pcc/${event.currentTarget.value}`,
       requestOptions
     );
-    openModal("The data was updated Successfully");
     sendData();
-  }
-  function openModal(text) {
-    const space = document.getElementsByClassName("modal");
-    const modalBody = document.getElementsByClassName("modalcontent");
-    modalBody[0].innerHTML = text;
-    space[0].style.display = "block";
-    console.log(text);
   }
   async function addData() {
     const input = document.getElementsByClassName("new");
@@ -97,14 +88,12 @@ function PccQuestionaire() {
       `http://localhost:8000/api/v1/pcc/`,
       requestOptions
     );
-
-    openModal("The data was added Successfully");
     sendData();
   }
 
   return (
     <div className="questionaire">
-      <label htmlFor="category">Select Process Area:</label>
+      <label htmlFor="category">Select Project Details: </label>
 
       <select name="category" onChange={sendData} id="category">
         {loading ? (
