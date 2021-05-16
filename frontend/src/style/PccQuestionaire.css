@@ -30,6 +30,13 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
+.pv input {
+  height: 30px;
+  width: 100%;
+  border: 1px solid #aaa;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 td,
 th {
@@ -37,7 +44,12 @@ th {
   text-align: center;
   padding: 8px;
 }
-
+.pv td,
+.pv th {
+  text-align: right;
+  font-size: 14px;
+  border-color: transparent !important;
+}
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }

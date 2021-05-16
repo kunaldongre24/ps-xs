@@ -29,11 +29,6 @@ function Sidebar(props) {
         Path={"/perform-pcc"}
       />
       <SidebarRow
-        Title="PCC Dashboard"
-        Icon={SpeedOutlinedIcon}
-        Path={"/pcc-dashboard"}
-      />
-      <SidebarRow
         Title="Open Topics"
         Icon={SubjectOutlinedIcon}
         Path={"/open-topics"}
