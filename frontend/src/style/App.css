@@ -12,3 +12,11 @@ body {
 body {
   padding-bottom: 100px;
 }
+.strip {
+  width: 100%;
+  background-repeat: no-repeat;
+  height: 5px;
+  background-image: url("../images/a.png");
+  background-size: 100%;
+  top: 0;
+}

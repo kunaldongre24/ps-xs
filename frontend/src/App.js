@@ -26,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="strip"></div>
       <div class="modal">
         <div class="modal-body">
           <span className="close" onClick={closeModal}>
