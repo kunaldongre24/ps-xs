@@ -1,0 +1,90 @@
+Question 1:
+
+Solution :
+
+
+C++(g++ 8.2.0)
+////////////////////////////////////////////
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+bool match(string str1,string str2){
+int i=0,j=0;
+int m = str1.length();
+int n=str2.length();
+while(j<m and i<n){
+	if(str1[j]==str2[i]){
+		
+			j++;
+		}
+			i++;
+	}
+	return (j==m);
+}
+int main(){
+	string str2;
+	cin>>str2;
+	int N;
+	cin>>N;
+	for(int i=0;i<N;i++){
+	string str1;
+	cin>>str1;
+		if(match(str1,str2)){
+			cout<<"POSITIVE"<<endl;
+			}
+		else{
+			cout<<"NEGATIVE"<<endl;
+			}
+		}
+}
+
+
+/////////////////////////////////////
+/////////////////////////////////
+Question 2:
+solution in Python 3:
+
+
+//////////////////////////
+
+def main():
+
+    testCase = int(input())
+    def isprime(n):
+        if n<=1:
+            return False
+        for i in range(2,n):
+            if n%i ==0:
+                return False
+        return True
+    
+    while testCase >0:
+        LR = list(map(int,input().strip().split()))
+        first = LR[0]
+        last = LR[1]
+        f = 0
+        l = 0
+        for i in range(first,last+1):
+            if f ==0:
+                if isprime(i):
+                    f=i
+                else:
+                    i = i+1
+            if l==0:
+                if isprime(last):
+                    l=last
+                else:
+                    last -=1
+            if f!=0 and l!=0:
+                break
+            
+        if f!=0 and l!=0:
+            print(l-f)
+        else:
+            print(-1)
+        
+        testCase -=1
+
+main()
